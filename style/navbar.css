@@ -66,3 +66,95 @@ footer p {
     color: var(--color-bg);
     font: var(--font-text);
 }
+/* =========================================
+   HAMBURGER (nur mobil sichtbar)
+   ========================================= */
+.nav-toggle,
+.nav-burger {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .main-nav {
+        grid-template-columns: 1fr auto auto;
+        padding: 10px 16px;
+        column-gap: 20px;
+    }
+
+    .nav-logo   { grid-column: 1; grid-row: 1; }
+    .social-list { grid-column: 2; grid-row: 1; }
+
+    /* Checkbox unsichtbar, aber weiter per Tastatur erreichbar */
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Burger-Button */
+    .nav-burger {
+        grid-column: 3;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .nav-burger span,
+    .nav-burger span::before,
+    .nav-burger span::after {
+        display: block;
+        width: 26px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: var(--color-bg);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .nav-burger span {
+        position: relative;
+    }
+    .nav-burger span::before,
+    .nav-burger span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+    }
+    .nav-burger span::before { top: -8px; }
+    .nav-burger span::after  { top: 8px; }
+
+    /* Zum X verwandeln */
+    .nav-toggle:checked ~ .nav-burger span {
+        background-color: transparent;
+    }
+    .nav-toggle:checked ~ .nav-burger span::before {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle:checked ~ .nav-burger span::after {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-toggle:focus-visible ~ .nav-burger {
+        outline: 2px solid var(--color-bg);
+        border-radius: 6px;
+    }
+
+    /* Aufklappmenü: eigene Zeile unter der Leiste */
+    .nav-list {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: none;
+        flex-direction: column;
+        margin-top: 10px;
+        border-top: 2px solid var(--color-bg);
+    }
+    .nav-toggle:checked ~ .nav-list {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 14px 10px;
+        font: var(--font-title-3);
+    }
+}

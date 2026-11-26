@@ -13,7 +13,7 @@
        'normal 400' ist der Standard und sorgt für saubere Lesbarkeit.
     */
     --font-title: normal 400 32px/1.2 "Merriweather", serif;
-    --font-title-2: normal 400 24px/1.2 "Merriweater", serif;
+    --font-title-2: normal 400 24px/1.2 "Merriweather", serif;
     --font-title-3: normal 400 20px/1.2 "Merriweather", serif;
     --font-title-4: normal 400 16px/1.2 "Merriweather", serif;
     --font-text: normal 400 16px/1.6 "Merriweather", serif;
@@ -24,10 +24,19 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+body {
     background-color: var(--color-bg);
     font: var(--font-text);
     overflow-x: hidden;
+
+    /* Sticky Footer */
+    min-height: 100vh;
+    min-height: 100dvh;   /* mobil: berücksichtigt die ein-/ausfahrende Browserleiste */
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;              /* main füllt den freien Platz, der Footer rutscht nach unten */
 }
 h1{
     color: var(--color-title);

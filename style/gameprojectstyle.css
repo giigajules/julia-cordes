@@ -167,18 +167,31 @@
     color: var(--theme-secondary, #90caf9);
 }
 
-/* Responsive: Auf dem Handy (unter 900px) alles untereinander anzeigen */
-@media (max-width: 900px) {
-    .project-details {
-        grid-template-columns: 1fr; /* Macht aus den 3 Spalten eine einzige */
-    }
-}
-
-
-
 .nav-link {
     color: var(--color-title);
 }
 .nav-link:hover {
     background-color: var(--color-bg);
+}
+
+/* Responsive: Auf dem Handy (unter 900px) alles untereinander anzeigen */
+@media (max-width: 900px) {
+    .project-details {
+        grid-template-columns: 1fr; /* Macht aus den 3 Spalten eine einzige */
+    }
+    .project-hero {
+        height: 30vh; /* Nimmt 20% der Bildschirmhöhe ein */
+        aspect-ratio: 16 / 9;   /* flacher = weniger Verzerrung der Maske */
+        margin-bottom: 30px;
+    }
+        .hero-bg {
+        left: 50%;
+        width: 160%;                 /* 160% der Seitenbreite statt 100% */
+        transform: translateX(-50%); /* mittig ausrichten, links und rechts ragt es raus */
+    }
+
+    .hero-logo {
+        width: 90%;
+        max-width: 380px;
+    }
 }
